@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skill Level-Up Cost Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Skill Level-Up Cost Calculator</h1>
+    <p>Enter the starting and ending skill levels to calculate the cost:</p>
+    <input type="number" id="startLevel" min="1" placeholder="Starting Level" />
+    <input type="number" id="endLevel" min="2" placeholder="Ending Level" />
+    <button onclick="calculateCost()">Calculate Cost</button>
+    <div id="result"></div>
+<script>
+    function calculateCost() {
+        const startLevel = parseInt(document.getElementById("startLevel").value);
+        const endLevel = parseInt(document.getElementById("endLevel").value);
+
+        if (isNaN(startLevel) || isNaN(endLevel) || endLevel <= startLevel) {
+            document.getElementById("result").textContent = "Invalid input. Please enter valid starting and ending levels.";
+            return;
+        }
+
+        let cost = 0;
+        for (let level = startLevel + 1; level <= endLevel; level++) {
+            cost += level;
+        }
+
+        document.getElementById("result").textContent = `The cost of raising a skill from level ${startLevel} to level ${endLevel} is: ${cost}`;
+    }
+</script>
+</body>
+</html>
